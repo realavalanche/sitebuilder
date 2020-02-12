@@ -165,7 +165,7 @@
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <input type="submit" value="Send Message" class="btn btn-primary btn-md text-white">
+                  <input type="submit" onClick="sendMail();" value="Send Message" class="btn btn-primary btn-md text-white">
                 </div>
               </div>
 
@@ -266,7 +266,28 @@
       </div>
     </footer>
   </div>
-
+  <script>
+    function sendMail() {
+      if (document.getElementById('fname').value &&
+      document.getElementById('lname').value &&
+      document.getElementById('subject').value &&
+      document.getElementById('email').value &&
+      document.getElementById('message').value
+      ) {
+      var link = "mailto:sid.317@gmail.com"
+              // + "?cc=sid.317@gmail.com"
+              + "&subject=" + escape(document.getElementById('subject').value)
+              + "&body=" + escape("Name: " + document.getElementById('fname').value + " " + document.getElementById('lname').value
+              + "\n\n"
+              + "Email: " + document.getElementById('email').value
+              + "\n\n"
+              + document.getElementById('message').value);
+      window.location.href = link;
+      } else {
+        alert('Please complete all the fields')
+      }
+    }
+  </script>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
